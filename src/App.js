@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { CardList } from "./components/card-list/card-list.component";
+import * as _ from 'lodash'
 
 class App extends Component {
   constructor() {
@@ -18,6 +19,9 @@ class App extends Component {
   }
 
   render() {
+    const { users, searchQuery } = this.state
+    const filteredUsers = _.filter(users, user => user.name.includes(searchQuery.toLowerCase()))
+
     return (
         <div className="App">
           <input
@@ -26,7 +30,7 @@ class App extends Component {
               onChange={(e) => {
                 this.setState({searchQuery: e.target.value})
               }}/>
-          <CardList users={this.state.users} />
+          <CardList users={filteredUsers} />
         </div>
     );
   }
