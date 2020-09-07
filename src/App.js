@@ -5,7 +5,10 @@ import { CardList } from "./components/card-list/card-list.component";
 class App extends Component {
   constructor() {
     super();
-    this.state = { users: [] }
+    this.state = {
+      users: [],
+      searchQuery: ''
+    }
   }
 
   componentDidMount() {
@@ -17,6 +20,12 @@ class App extends Component {
   render() {
     return (
         <div className="App">
+          <input
+              type='search'
+              placeholder='Search users'
+              onChange={(e) => {
+                this.setState({searchQuery: e.target.value})
+              }}/>
           <CardList users={this.state.users} />
         </div>
     );
