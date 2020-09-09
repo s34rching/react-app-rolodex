@@ -1,7 +1,8 @@
+import * as _ from 'lodash'
 import React, { Component } from 'react';
 import './App.css';
 import { CardList } from "./components/card-list/card-list.component";
-import * as _ from 'lodash'
+import { SearchBox } from "./components/search-box/search-box.component"
 
 class App extends Component {
   constructor() {
@@ -24,12 +25,10 @@ class App extends Component {
 
     return (
         <div className="App">
-          <input
-              type='search'
+          <SearchBox
               placeholder='Search users'
-              onChange={(e) => {
-                this.setState({searchQuery: e.target.value})
-              }}/>
+              handleChange={(e) => { this.setState({searchQuery: e.target.value}) }}
+          />
           <CardList users={filteredUsers} />
         </div>
     );
