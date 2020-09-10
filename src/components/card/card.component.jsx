@@ -9,7 +9,7 @@ export const Card = (props) => {
   return (
     <div className={'card-container'}>
       <img alt="user" src={`${logoSrc}${props.user.id}?set=set${logoSet}&size=${logoSize}`} />
-      <h1>{props.user.name}</h1>
+      <h2>{props.user.name}</h2>
       <p>{props.user.email}</p>
     </div>
   )
